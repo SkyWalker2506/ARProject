@@ -10,7 +10,6 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     ARRaycastManager raycastManager;
     List<ARRaycastHit> hits;
- //   public GameObject Model; 
 
     void Start()
     {
