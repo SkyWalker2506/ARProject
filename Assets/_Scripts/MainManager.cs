@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class MainManager : MonoBehaviour
+{
+    public GameObject FireWork;
+    public GameObject ExplosionEffect;
+    public float ExplosionRadius = 5;
+    public float ExplosionForce = 1500;
+    public List<AnimationClip> StandingUpAnims1;
+    public List<AnimationClip> StandingUpAnims2;
+    public Transform MainCamera;
+    public SelectedIndicator SelectedIndicator;
+    GameObject currentARObjectToLoad;
+    public GameObject CurrentARObjectToLoad
+    {
+        get
+        {
+            return currentARObjectToLoad;
+        }
+        set
+        {
+            if (value)
+                UIManager.Instance.ARPlacementIndicator.SetActive(true);
+            else
+                UIManager.Instance.ARPlacementIndicator.SetActive(false);
+            currentARObjectToLoad = value;
+        }
+    }
+    ARObject selectedArObject;
+    public ARObject SelectedArObject
+    {
+        get
+        {
+            return selectedArObject;
+        }
+        set
+        {
+            selectedArObject = value;
+            if(UIManager.Instance.AnimationHolderParent.GetChild(0))
+            Destroy(UIManager.Instance.AnimationHolderParent.GetChild(0).gameObject);
+            if(selectedArObject)
+            {
+                if(selectedArObject.Root)
+                SelectedIndicator.SelectedObject = selectedArObject.Root.transform;
+                Instantiate(selectedArObject.AnimationContentHolder, UIManager.Instance.AnimationHolderParent);
+                SelectedIndicator.gameObject.SetActive(true);
+                SelectedIndicator.Indicator.color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f), .5f);
+                UIManager.Instance.ARPlacementIndicator.SetActive(true);
+                value.gameObject.SetActive(true);
+            }
+            else
+            {
+                SelectedIndicator.SelectedObject = null;
+                SelectedIndicator.gameObject.SetActive(false);
+            }
+           
+        }
+    }
+
+
+    public static MainManager Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+}

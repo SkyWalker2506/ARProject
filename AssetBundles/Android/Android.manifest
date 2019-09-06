@@ -1,0 +1,11 @@
+ManifestFileVersion: 0
+CRC: 1537904634
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: grandmatextures
+      Dependencies: {}
+    Info_1:
+      Name: granny
+      Dependencies:
+        Dependency_0: grandmatextures
