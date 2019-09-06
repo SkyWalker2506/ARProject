@@ -14,9 +14,8 @@ public class AnimationButton : MonoBehaviour
             return;
             ARObj.GetComponentsInChildren<Rigidbody>().ToList().ForEach(rb => rb.isKinematic = true);
         ARObj.GetComponentsInChildren<Collider>().ToList().ForEach(c => c.isTrigger=true);
-        Animation animation = ARObj.Anim;
-        AddAnimationClip(animation);
-        animation.Play();
+        AddAnimationClip(ARObj.Anim);
+        ARObj.Anim.Play();
     }
 
     public void AddAnimationClip(Animation animation)

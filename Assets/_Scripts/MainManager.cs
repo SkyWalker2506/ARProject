@@ -10,6 +10,7 @@ public class MainManager : MonoBehaviour
     public GameObject ExplosionEffect;
     public float ExplosionRadius = 5;
     public float ExplosionForce = 1500;
+    // Some animations don't work with some models so I added two different animation list for the models
     public List<AnimationClip> StandingUpAnims1;
     public List<AnimationClip> StandingUpAnims2;
     public Transform MainCamera;

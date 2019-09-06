@@ -74,8 +74,8 @@ public class ARObject : MonoBehaviour
         isStandingUp = true;
         yield return new WaitForSecondsRealtime(2);
         ToggleRagdoll(false);
-        //  AnimationClip OldClip = Anim.clip;
         AnimationClip Clip;
+
         if (!gameObject.name.Contains("vanguard"))
             Clip = MainManager.Instance.StandingUpAnims1.GetRandom();
         else

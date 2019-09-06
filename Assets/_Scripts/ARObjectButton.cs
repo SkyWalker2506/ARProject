@@ -7,7 +7,7 @@ public class ARObjectButton: MonoBehaviour
 {
 
     public ARObjectData ARObjectData;
-    bool isDownloading=false;
+    bool isDownloading;
     public void DownloadAndCreateObject()
     {
         StartCoroutine(CreateObject());
@@ -30,7 +30,6 @@ public class ARObjectButton: MonoBehaviour
                 Destroy(current.AnimationContentHolder);
                 Destroy(current.gameObject);
             }
-          //  MainManager.Instance.SelectedArObject = null;
             MainManager.Instance.CurrentARObjectToLoad = GO;
         }
     }
@@ -41,8 +40,6 @@ public class ARObjectButton: MonoBehaviour
         {
             isDownloading = true;
         Coroutine indicator= StartCoroutine(UIManager.Instance.UpdateDownloadIndicator(arObjectData));
-       // yield return arObjectData.Animations.GetFileSize();
-       // yield return arObjectData.Textures.GetFileSize();
         yield return arObjectData.ModelObject.DownloadModel();
         yield return arObjectData.Textures.DownloadTexture();
         yield return arObjectData.Animations.DownloadAnimation();
