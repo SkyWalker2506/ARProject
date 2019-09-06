@@ -25,12 +25,16 @@ public class ARTapToPlaceObject : MonoBehaviour
             return;
         }
 
-#if UNITY_EDITOR
-        MainManager.Instance.CurrentARObjectToLoad.transform.position = Vector3.zero;
-        MainManager.Instance.CurrentARObjectToLoad.transform.rotation = Quaternion.identity;
-        MainManager.Instance.SelectedArObject = MainManager.Instance.CurrentARObjectToLoad.GetComponent<ARObject>();
-        MainManager.Instance.CurrentARObjectToLoad = null;
-#endif
+        //For simulating tap effect in Editor
+        #if UNITY_EDITOR
+        if(Input.GetMouseButtonDown(0))
+        {
+               MainManager.Instance.CurrentARObjectToLoad.transform.position = Vector3.zero;
+               MainManager.Instance.CurrentARObjectToLoad.transform.rotation = Quaternion.identity;
+               MainManager.Instance.SelectedArObject = MainManager.Instance.CurrentARObjectToLoad.GetComponent<ARObject>();
+               MainManager.Instance.CurrentARObjectToLoad = null;
+        }
+        #endif
         if (Input.touchCount == 0)
             return;
 
