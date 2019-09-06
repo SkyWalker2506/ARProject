@@ -37,7 +37,7 @@ public class ARObject : MonoBehaviour
         Anim= GetComponent<Animation>();
         SetBodyParts();
         Root = BodyParts.Find(bp => bp.GetComponent<CharacterJoint>() == null).transform;
-        MainManager.Instance.SelectedIndicator.SelectedObject = Root;
+        MainManager.Instance.SelectedIndicator.SelectedObject = this;
         isRagdollOn = false;
         ToggleRagdoll(isRagdollOn);
     }

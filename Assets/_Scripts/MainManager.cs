@@ -46,7 +46,7 @@ public class MainManager : MonoBehaviour
             if(selectedArObject)
             {
                 if(selectedArObject.Root)
-                SelectedIndicator.SelectedObject = selectedArObject.Root.transform;
+                SelectedIndicator.SelectedObject = selectedArObject;
                 Instantiate(selectedArObject.AnimationContentHolder, UIManager.Instance.AnimationHolderParent);
                 SelectedIndicator.gameObject.SetActive(true);
                 SelectedIndicator.Indicator.color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f), .5f);

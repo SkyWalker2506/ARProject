@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SelectedIndicator : MonoBehaviour
 {
-    public Transform SelectedObject;
+    public ARObject SelectedObject;
     public Image Indicator;
 
 
@@ -16,7 +16,7 @@ public class SelectedIndicator : MonoBehaviour
     {
         if (SelectedObject)
         {
-            transform.position = new Vector3(SelectedObject.position.x, SelectedObject.position.y-.9f, SelectedObject.position.z);
+            transform.position = new Vector3(SelectedObject.Root.position.x, SelectedObject.transform.position.y, SelectedObject.Root.position.z);
         }
     }
 }
