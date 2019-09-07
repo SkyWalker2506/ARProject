@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class MainManager : MonoBehaviour
 {
+    [SerializeField]
+    GameObject ground;
     public GameObject FireWork;
     public GameObject ExplosionEffect;
     public float ExplosionRadius = 5;
@@ -63,6 +65,7 @@ public class MainManager : MonoBehaviour
     }
 
 
+
     public static MainManager Instance;
 
     void Awake()
@@ -71,5 +74,11 @@ public class MainManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        #if UNITY_EDITOR
+             ground.SetActive(true);
+        #else
+             ground.SetActive(false);
+        #endif
     }
 }
